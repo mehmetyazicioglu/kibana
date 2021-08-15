@@ -1,14 +1,10 @@
 FROM docker.elastic.co/kibana/kibana:7.14.0
 
-LABEL Maintainer= Mehmet
+LABEL Maintainer="Mehmet Yazicioglu"
 
 USER root
 
-# copy custom entrypoint:
-COPY docker-entrypoint /usr/local/bin/docker-entrypoint
-
-RUN chmod 755 /usr/local/bin/docker-entrypoint \
-    && yum update -y \
-    && yum clean all \
+RUN yum update -y \
+    && yum clean all
 
 USER kibana
